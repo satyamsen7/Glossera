@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossera - Premium Car Detailing Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #0a0a0a;
+            color: white;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 70px;
+            height: 70px;
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
+            animation: none;
+            position: relative;
+            overflow: visible;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            max-height: 70px;
+            object-fit: contain;
+            border-radius: 0;
+            padding: 0;
+        }
+
+        .logo::before {
+            content: none;
+        }
+
+        @keyframes logoGlow {
+            0% { 
+                box-shadow: 0 0 30px rgba(220, 38, 38, 0.6), 0 0 60px rgba(220, 38, 38, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+                transform: scale(1);
+            }
+            100% { 
+                box-shadow: 0 0 40px rgba(220, 38, 38, 0.8), 0 0 80px rgba(220, 38, 38, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.2);
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes logoShine {
+            0% { transform: rotate(45deg) translateX(-200%); }
+            100% { transform: rotate(45deg) translateX(200%); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: #dc2626;
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -8px;
+            left: 0;
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 5px rgba(220, 38, 38, 0.5);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(220, 38, 38, 0.1) 50%, transparent 70%);
+            animation: heroShine 8s ease-in-out infinite;
+        }
+
+        @keyframes heroShine {
+            0%, 100% { transform: translateX(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #dc2626;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float-particles 6s infinite linear;
+        }
+
+        .particle:nth-child(2n) {
+            background: #ef4444;
+            animation-duration: 8s;
+        }
+
+        .particle:nth-child(3n) {
+            background: #fff;
+            animation-duration: 10s;
+        }
+
+        @keyframes float-particles {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            z-index: 10;
+            position: relative;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #fff, #dc2626, #fff);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGradient 3s ease-in-out infinite alternate, slideInUp 1s ease-out;
+        }
+
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out 0.3s both;
+            color: #f3f4f6;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 3rem;
+            animation: slideInUp 1s ease-out 0.6s both;
+            color: #dc2626;
+            text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.9s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 10px 30px rgba(220, 38, 38, 0.4),
+                inset 0 0 0 2px transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 
+                0 20px 50px rgba(220, 38, 38, 0.6),
+                0 0 30px rgba(220, 38, 38, 0.8);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #dc2626;
+            color: #dc2626;
+        }
+
+        .cta-secondary:hover {
+            background: #dc2626;
+            color: white;
+            border-color: #dc2626;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: 
+                radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #000 0%, #111 50%, #000 100%);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 4rem;
+            color: #fff;
+            position: relative;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: white;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border: 2px solid #333;
+            border-radius: 25px;
+            padding: 2.5rem;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(220, 38, 38, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #dc2626, #ef4444, #dc2626);
+            z-index: -1;
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #dc2626;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 50px rgba(220, 38, 38, 0.3);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-features li {
+            padding: 0.8rem 0;
+            position: relative;
+            padding-left: 2rem;
+            color: #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #efeded;
+            font-weight: bold;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
+        }
+
+        .service-card:hover .service-features li {
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        .book-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .book-btn:hover::before {
+            left: 100%;
+        }
+
+        .book-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.5);
+        }
+
+        /* Premium Services */
+        .premium-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .premium-card {
+            background: linear-gradient(145deg, #dc2626, #7f1d1d);
+            color: white;
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 50px rgba(220, 38, 38, 0.2);
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent 340deg, rgba(255, 255, 255, 0.3) 360deg);
+            animation: premiumRotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .premium-card:hover::before {
+            opacity: 1;
+        }
+
+        .premium-card:hover {
+            transform: scale(1.08) rotateY(5deg);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.4),
+                0 0 80px rgba(220, 38, 38, 0.4);
+        }
+
+        @keyframes premiumRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .premium-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .premium-card .service-price {
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Brand Partners Section */
+        .partners {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #111 0%, #000 50%, #111 100%);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .partner-logo {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .partner-logo:hover {
+            background: rgba(220, 38, 38, 0.1);
+            transform: translateY(-10px);
+            border-color: #dc2626;
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 6rem 0;
+            background: 
+                radial-gradient(circle at 50% 100%, rgba(220, 38, 38, 0.2) 0%, transparent 70%),
+                linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+            position: relative;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9));
+            padding: 4rem;
+            border-radius: 25px;
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 50px rgba(220, 38, 38, 0.1),
+                inset 0 0 50px rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #333;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #dc2626;
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.02);
+            box-shadow: 
+                0 0 20px rgba(220, 38, 38, 0.3),
+                inset 0 0 20px rgba(220, 38, 38, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 15px 30px rgba(220, 38, 38, 0.4),
+                0 0 30px rgba(220, 38, 38, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+            color: white;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: #dc2626;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 
+                0 15px 30px rgba(220, 38, 38, 0.5),
+                0 0 30px rgba(220, 38, 38, 0.7);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .premium-services {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+                margin: 0 1rem;
+                width: auto;
+                max-width: 100%;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 0.95rem;
+                padding: 12px 14px;
+            }
+
+            .submit-btn {
+                padding: 14px;
+                font-size: 1rem;
+            }
+
+            .footer-info {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-links a {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                margin-bottom: 2.5rem;
+            }
+
+            .contact {
+                padding: 4rem 0;
+            }
+
+            .contact-form {
+                padding: 1.25rem;
+                margin: 0;
+                border-radius: 16px;
+            }
+
+            .form-group {
+                margin-bottom: 1.2rem;
+            }
+
+            .submit-btn {
+                padding: 12px;
+                font-size: 0.95rem;
+                border-radius: 10px;
+            }
+
+            .footer {
+                padding: 3rem 0 1.5rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .footer-section p {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                padding: 1rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+            }
+            .nav-links.active a {
+                padding: 0.5rem 0;
+            }
+        }
+
+        /* Cars Showcase */
+        .cars {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #000 0%, #0f0f0f 50%, #000 100%);
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .car-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-8px);
+            border-color: #dc2626;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(220, 38, 38, 0.2);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 180px;
+            background: #111 center/cover no-repeat;
+        }
+
+        .car-content {
+            padding: 1.2rem 1.2rem 1.4rem;
+        }
+
+        .car-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .car-meta {
+            font-size: 0.95rem;
+            color: #e5e7eb;
+        }
+
+        /* Image-only gallery (promos) */
+        .promos {
+            padding: 4rem 0;
+            background: linear-gradient(180deg, #0b0b0b 0%, #000 100%);
+        }
+
+        .promos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .promo-card {
+            border-radius: 14px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid #242424;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-6px);
+            border-color: #dc2626;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.4), 0 0 24px rgba(220, 38, 38, 0.18);
+        }
+
+        .promo-image {
+            width: 100%;
+            height: 180px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* Utility: show full image without cropping */
+        .promo-image.contain {
+            background-size: contain;
+            background-color: #000;
+        }
+
+        .promo-image--tall {
+            height: 260px;
+        }
+
+        /* Tight image variant: border hugs the actual image */
+        .promo-card.tight {
+            background: transparent;
+            border: none;
+            overflow: visible;
+        }
+
+        .promo-card.tight .promo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+            border: 1px solid #242424;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Glossera logo">
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 3.5s;"></div>
+        </div>
+        <div class="hero-content">
+            <h1>GLOSSERA</h1>
+            <p class="hero-subtitle">Premium Car Detailing Studio</p>
+            <p class="tagline">"Your car deserves more than just clean – it deserves GLOSSERA"</p>
+            <div class="hero-buttons">
+                <a href="#services" class="cta-button">Explore Services</a>
+                <a href="#contact" class="cta-button cta-secondary">Get Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Washing Levels</h2>
+            <div class="promos-grid" style="margin-bottom: 2rem;">
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_6953.JPG" alt="Promo image 1"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_6954.JPG" alt="Promo image 2"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_6955.JPG" alt="Promo image 3"></div>
+            </div>
+            <h2 class="section-title fade-in">Our Washing Levels</h2>
+            
+            <div class="services-grid">
+                <!-- Gloss Touch -->
+                <div class="service-card fade-in" onclick="bookService('Gloss Touch', '₹349', 'Basic exterior wash, Foam wash, Underbody cleaning, Tyre cleaning, Microfiber scratch-proof cleaning')">
+                    <div class="service-header">
+                        <h3 class="service-title">GLOSS TOUCH</h3>
+                        <span class="service-price">₹349</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Basic exterior wash</li>
+                        <li>Foam wash</li>
+                        <li>Underbody cleaning</li>
+                        <li>Tyre cleaning</li>
+                        <li>Microfiber scratch-proof cleaning</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+                <!-- Dual Gloss -->
+                <div class="service-card fade-in" onclick="bookService('Dual Gloss', '₹499', 'Exterior + Interior wash, Deep vacuum cleaning, Interior refresh, Dashboard polish, Interior sanitisation')">
+                    <div class="service-header">
+                        <h3 class="service-title">DUAL GLOSS</h3>
+                        <span class="service-price">₹499</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Exterior + Interior wash</li>
+                        <li>Deep vacuum cleaning</li>
+                        <li>Interior refresh</li>
+                        <li>Dashboard polish</li>
+                        <li>Interior sanitisation</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+                <!-- Crystal Gloss -->
+                <div class="service-card fade-in" onclick="bookService('Crystal Gloss', '₹999', 'Exterior + Interior + Polish, Engine steam, AC steam cleaning, Exterior polish')">
+                    <div class="service-header">
+                        <h3 class="service-title">CRYSTAL GLOSS</h3>
+                        <span class="service-price">₹999</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Exterior + Interior + Polish</li>
+                        <li>Engine steam</li>
+                        <li>AC steam cleaning</li>
+                        <li>Exterior polish</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+            </div>
+
+            <h2 class="section-title fade-in">Premium Protection Services</h2>
+            
+            <div class="premium-services">
+                <!-- Ceramic Coating -->
+                <div class="service-card fade-in" onclick="bookService('Ceramic Coating', '₹17,999 onwards', 'Forever Young MAFRA hydrophobic ceramic, Maniac Top Gloss 5, 3M Ceramic, Kovalent Ceramic Coating - 10H hardness protection')">
+                    <h3>Ceramic Coating (10H)</h3>
+                    <p class="service-price">₹17,999 onwards</p>
+                    <ul class="service-features">
+                        <li>Forever Young (MAFRA hydrophobic ceramic)</li>
+                        <li>Maniac Top Gloss 5</li>
+                        <li>3M Ceramic</li>
+                        <li>Kovalent Ceramic Coating</li>
+                        <li>10H hardness protection</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+                <!-- Graphene Coating -->
+                <div class="service-card fade-in" onclick="bookService('Graphene Coating', '₹24,999 onwards', 'Ultra Gloss 10H, M4D Graphene, LOD Graphene, Kovalent Graphene - Advanced nanotechnology protection')">
+                    <h3>Graphene Coating (10H)</h3>
+                    <p class="service-price">₹24,999 onwards</p>
+                    <ul class="service-features">
+                        <li>Ultra Gloss (10H)</li>
+                        <li>M4D Graphene</li>
+                        <li>LOD Graphene</li>
+                        <li>Kovalent Graphene</li>
+                        <li>Advanced nanotechnology</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+                <!-- PPF -->
+                <div class="service-card fade-in" onclick="bookService('PPF Paint Protection Film', '₹54,999 onwards', 'Self-healing technology, Super shine, Acid rain protection, Hydrophobic coating, 5+ Years TPU warranty - Ultimate paint protection')">
+                    <h3>PPF - Paint Protection Film</h3>
+                    <p class="service-price">₹54,999 onwards</p>
+                    <ul class="service-features">
+                        <li>Self-healing technology</li>
+                        <li>Super shine finish</li>
+                        <li>Acid rain protection</li>
+                        <li>Hydrophobic coating</li>
+                        <li>5+ Years warranty</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+            </div>
+
+            <br><br><br>
+
+            <h2 class="section-title fade-in">Our Washing Levels</h2>
+            <div class="promos-grid" style="margin: 2rem 0 3rem;">
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_7092.jpg" alt="Work image"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_7084.jpg" alt="Work image"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_7091.jpg" alt="Work image"></div>
+            </div>
+
+            <h2 class="section-title fade-in">GlossXtras - Extra Care Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in" onclick="bookService('Glass Restoration', '₹999', 'Professional glass restoration service for crystal clear visibility')">
+                    <div class="service-header">
+                        <h3 class="service-title">Glass Restoration</h3>
+                        <span class="service-price">₹999</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Crystal clear visibility</li>
+                        <li>Scratch removal</li>
+                        <li>Professional treatment</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+                <div class="service-card fade-in" onclick="bookService('AC Vent Deep Cleaning', '₹999', 'Deep cleaning and sanitization of AC vents for fresh air circulation')">
+                    <div class="service-header">
+                        <h3 class="service-title">AC Vent Deep Cleaning</h3>
+                        <span class="service-price">₹999</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Deep sanitization</li>
+                        <li>Fresh air circulation</li>
+                        <li>Odor elimination</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+                <div class="service-card fade-in" onclick="bookService('Engine Cleaning & Coat', '₹699', 'Engine bay cleaning and protective coating for longevity')">
+                    <div class="service-header">
+                        <h3 class="service-title">Engine Cleaning & Coat</h3>
+                        <span class="service-price">₹699</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Engine bay cleaning</li>
+                        <li>Protective coating</li>
+                        <li>Enhanced longevity</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+            </div>
+
+            <h2 class="section-title fade-in">Biker's Love - Motorcycle Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in" onclick="bookService('Street Spark', '₹149', 'Foam wash with neutral shampoo for motorcycles')">
+                    <div class="service-header">
+                        <h3 class="service-title">Street Spark</h3>
+                        <span class="service-price">₹149</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Foam wash</li>
+                        <li>Neutral shampoo</li>
+                        <li>Motorcycle specialized</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+                <div class="service-card fade-in" onclick="bookService('Bike Premium Package', '₹499', 'Chrome & alloy coat, hydrophobic coating, helmet visor coating, helmet sanitization - Any 2 services')">
+                    <div class="service-header">
+                        <h3 class="service-title">Premium Package</h3>
+                        <span class="service-price">₹499</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Chrome & alloy coat</li>
+                        <li>Hydrophobic coating</li>
+                        <li>Helmet visor coating</li>
+                        <li>Helmet sanitization</li>
+                        <li>Any 2 services</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+                <div class="service-card fade-in" onclick="bookService('Bike Ceramic/Graphene', '₹1,999', 'Ceramic or Graphene coating for motorcycles - premium protection')">
+                    <div class="service-header">
+                        <h3 class="service-title">Ceramic/Graphene</h3>
+                        <span class="service-price">₹1,999</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Ceramic coating option</li>
+                        <li>Graphene coating option</li>
+                        <li>Premium protection</li>
+                        <li>Long-lasting shine</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Brand Partners Section -->
+    <section class="partners" id="partners">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Trusted Partners</h2>
+            <div class="partners-grid">
+                <div class="partner-logo fade-in"><img src="assets/m4d-logo.webp" alt="M4D logo" style="max-width: 140px;"></div>
+                <div class="partner-logo fade-in"><img src="assets/logo-ccc-1-removebg-preview-qpgcjt8q0q25lt7gw16l6vkr7bwbu856npz1qzm5uw.png" alt="Car Craft Studio logo" style="max-width: 160px;"></div>
+                <div class="partner-logo fade-in"><img src="assets/header-logo.webp" alt="Manmachine Works logo" style="max-width: 170px;"></div>
+                <div class="partner-logo fade-in"><img src="assets/Logonew_2_png.png" alt="3M logo" style="max-width: 80px;"></div>
+                <div class="partner-logo fade-in"><img src="assets/Mafra-&-maxshine-combine-logo-2-2.png" alt="Mafra logo" style="max-width: 120px;"></div>
+                <div class="partner-logo fade-in"><img src="assets/logo-white.png" alt="GARWARE" style="max-width: 140px;"></div>
+                <div class="partner-logo fade-in"><img src="assets/Maniac-Line-4K.png" alt="Maniac-Line" style="max-width: 140px;"></div>
+                <div class="partner-logo fade-in"><img src="assets/Ultraguard-PPF.webp" alt="Ultraguard-PPF" style="max-width: 140px;"></div>
+                <div class="partner-logo fade-in"><img src="assets/logo-annovi-reverberi-w.57cf059b.svg" alt="annovi-reverberi" style="max-width: 140px;"></div>
+                <div class="partner-logo fade-in"><img src="assets/pg-lgo-1-600x154.png" alt="PAINTGUARD" style="max-width: 140px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cars Showcase Section -->
+    <section class="cars" id="cars">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Cars</h2>
+            <div class="cars-grid">
+                <div class="car-card fade-in">
+                    <div class="car-image" style="background-image:url('assets/cars/car1.jpg');"></div>
+                    <div class="car-content">
+                        <div class="car-title">BMW 3 Series • Ceramic Coating</div>
+                        <div class="car-meta">10H Ceramic, 3-year protection, mirror gloss finish</div>
+                    </div>
+                </div>
+                <div class="car-card fade-in">
+                    <div class="car-image" style="background-image:url('assets/cars/car2.jpg');"></div>
+                    <div class="car-content">
+                        <div class="car-title">Kia Seltos • Graphene Coating</div>
+                        <div class="car-meta">Ultra Gloss 10H, hydrophobic, easy clean, deep shine</div>
+                    </div>
+                </div>
+                <div class="car-card fade-in">
+                    <div class="car-image" style="background-image:url('assets/cars/car3.jpg');"></div>
+                    <div class="car-content">
+                        <div class="car-title">Hyundai Creta • PPF</div>
+                        <div class="car-meta">Self-healing TPU, anti-scratch, acid rain protection</div>
+                    </div>
+                </div>
+                <div class="car-card fade-in">
+                    <div class="car-image" style="background-image:url('assets/cars/car4.jpg');"></div>
+                    <div class="car-content">
+                        <div class="car-title">Royal Enfield • Detailing</div>
+                        <div class="car-meta">Chrome polish, hydrophobic coat, visor protection</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <form class="contact-form fade-in" onsubmit="submitContact(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="car">Car Model</label>
+                    <input type="text" id="car" name="car" placeholder="Enter your car model (optional)">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Interested In *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="Gloss Touch">Gloss Touch - ₹349</option>
+                        <option value="Dual Gloss">Dual Gloss - ₹499</option>
+                        <option value="Crystal Gloss">Crystal Gloss - ₹999</option>
+                        <option value="Ceramic Coating">Ceramic Coating - ₹17,999+</option>
+                        <option value="Graphene Coating">Graphene Coating - ₹24,999+</option>
+                        <option value="PPF">PPF Paint Protection Film - ₹54,999+</option>
+                        <option value="Glass Restoration">Glass Restoration - ₹999</option>
+                        <option value="AC Vent Cleaning">AC Vent Deep Cleaning - ₹999</option>
+                        <option value="Engine Cleaning">Engine Cleaning & Coat - ₹699</option>
+                        <option value="Bike Services">Motorcycle Services</option>
+                        <option value="Custom Quote">Custom Quote Request</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your requirements..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Inquiry via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-section">
+                    <h3>GLOSSERA GUNA</h3>
+                    <p>📍 Dev Heights, A.B. Road<br>
+                    Near Maruti Suzuki Showroom<br>
+                    Dist-Guna (M.P) - 473001</p>
+                    <p style="margin-top: 1rem; color: #dc2626; font-style: italic;">
+                        "Trusted locally, Delivered professionally"
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📞 +91 9131799566<br>
+                    📞 7000344062<br>
+                    📞 9770881363</p>
+                    <p style="margin-top: 1rem;">
+                    ✉️ glosseraguna@gmail.com<br>
+                    🌐 glosseradetailing.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Why Choose Glossera?</h3>
+                    <p>✓ International tools & techniques<br>
+                    ✓ Certified & trained employees<br>
+                    ✓ Showroom-level results<br>
+                    ✓ Top-quality products<br>
+                    ✓ Precision techniques</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Specialties</h3>
+                    <p>• Ceramic-Graphene Coatings<br>
+                    • Paint Protection Film (PPF)<br>
+                    • Interior Restoration<br>
+                    • AC Cleaning & Sanitization<br>
+                    • Glass Restoration<br>
+                    • Motorcycle Detailing</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://instagram.com/glossera_car.detailing.studio" target="_blank" title="Instagram">📷</a>
+                <a href="https://youtube.com/c/GlosseraCarDetailingStudio" target="_blank" title="YouTube">📹</a>
+                <a href="https://glosseradetailing.com" target="_blank" title="Website">🌐</a>
+                <a href="tel:+919131799566" title="Call Us">📞</a>
+                <a href="https://api.whatsapp.com/send?phone=919131799566&text=hello%20sir" target="_blank" title="WhatsApp">💬</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 GLOSSERA - A registered trademark & copyright brand of SHANTI PRAKASH AUTOCRAFTS. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; color: #dc2626;">
+                    CLEAN IT • SHINE IT • PROTECT IT
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        // Book service function with WhatsApp integration
+        function bookService(serviceName, price, features) {
+            const raw = `🚗 *GLOSSERA SERVICE BOOKING* 🚗\n\n✨ *Service:* ${serviceName}\n💰 *Price:* ${price}\n\n📋 *Service Features:*\n${features}\n\n📞 *Request:* Please provide more details about availability and booking process.\n\n🌟 Thank you for choosing Glossera!`;
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=919131799566&text=${encodeURIComponent(raw)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Contact form submission with WhatsApp integration
+        function submitContact(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const car = document.getElementById('car').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            const raw = `🚗 *GLOSSERA CUSTOMER INQUIRY* 🚗\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📱 *Phone:* ${phone}\n🚗 *Car Model:* ${car || 'Not specified'}\n🔧 *Service Interested:* ${service}\n\n💬 *Message:*\n${message || 'No additional message'}\n\n🌟 *Request:* Please contact me with more information about your services and pricing.\n\nThank you!`;
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=919131799566&text=${encodeURIComponent(raw)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form after submission
+            event.target.reset();
+        }
+
+        // Enhanced navbar effect on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(220, 38, 38, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Create floating particles dynamically
+        function createParticles() {
+            const heroParticles = document.querySelector('.hero-particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heroParticles.appendChild(particle);
+            }
+        }
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+
+        // Mobile menu toggle functionality
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Preload critical animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force hardware acceleration for smooth animations
+            const animatedElements = document.querySelectorAll('.service-card, .premium-card, .logo');
+            animatedElements.forEach(el => {
+                el.style.transform = 'translateZ(0)';
+                el.style.backfaceVisibility = 'hidden';
+                el.style.perspective = '1000px';
+            });
+        });
+    </script>
+</body>
+</html>
