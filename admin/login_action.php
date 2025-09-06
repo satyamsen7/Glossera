@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             setcookie("admin_token", hash('sha256', $admin['email'] . $admin['phone']), time() + (7 * 24 * 60 * 60), "/");
         }
 
-        header("Location: dashboard.php");
+        header("Location: index.php");
         exit;
     } else {
         echo "<script>alert('❌ Invalid login credentials'); window.location='login.php';</script>";

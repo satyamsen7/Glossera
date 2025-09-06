@@ -80,7 +80,7 @@ $admin = $stmt->get_result()->fetch_assoc();
         <!-- Menu Items with Icons -->
         <div class="py-2">
   <!-- Dashboard - Grid/Layout icon -->
-  <a href="dashboard.php" class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 transition-colors">
+  <a href="index.php" class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 transition-colors">
     <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
     </svg>
