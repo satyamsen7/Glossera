@@ -404,6 +404,10 @@
             border: 2px solid #333;
             border-radius: 25px;
             padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             position: relative;
@@ -411,39 +415,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(220, 38, 38, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
 
-        .service-card::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #dc2626, #ef4444, #dc2626);
-            z-index: -1;
-            border-radius: 25px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-card:hover::after {
-            opacity: 1;
-        }
 
         .service-card:hover {
             transform: translateY(-15px) scale(1.02);
@@ -482,7 +454,7 @@
 
         .service-features {
             list-style: none;
-            margin-bottom: 2rem;
+            margin-bottom: auto;
             position: relative;
             z-index: 2;
         }
@@ -630,19 +602,29 @@
         }
 
         .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
             gap: 2rem;
             align-items: center;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            white-space: nowrap;
         }
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 
         .partner-logo {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
+            background: none;
+            padding: 0 32px;
+            border-radius: 0;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(220, 38, 38, 0.2);
+            transition: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .partner-logo:hover {
@@ -1128,8 +1110,9 @@
             <div class="particle" style="left: 80%; animation-delay: 1.5s;"></div>
             <div class="particle" style="left: 90%; animation-delay: 3.5s;"></div>
         </div>
+        
         <div class="hero-content">
-            <h1>GLOSSERA</h1>
+         <img src="assets/logo.png" alt="Glossera logo" class="hero-logo" style="display: block; margin-left: auto; margin-right: auto;">
             <p class="hero-subtitle">Premium Car Detailing Studio</p>
             <p class="tagline">"Your car deserves more than just clean – it deserves GLOSSERA"</p>
             <div class="hero-buttons">
@@ -1352,16 +1335,31 @@
         <div class="container">
             <h2 class="section-title fade-in">Our Trusted Partners</h2>
             <div class="partners-grid">
-                <div class="partner-logo fade-in"><img src="assets/m4d-logo.webp" alt="M4D logo" style="max-width: 140px;"></div>
-                <div class="partner-logo fade-in"><img src="assets/logo-ccc-1-removebg-preview-qpgcjt8q0q25lt7gw16l6vkr7bwbu856npz1qzm5uw.png" alt="Car Craft Studio logo" style="max-width: 160px;"></div>
-                <div class="partner-logo fade-in"><img src="assets/header-logo.webp" alt="Manmachine Works logo" style="max-width: 170px;"></div>
-                <div class="partner-logo fade-in"><img src="assets/Logonew_2_png.png" alt="3M logo" style="max-width: 80px;"></div>
-                <div class="partner-logo fade-in"><img src="assets/Mafra-&-maxshine-combine-logo-2-2.png" alt="Mafra logo" style="max-width: 120px;"></div>
-                <div class="partner-logo fade-in"><img src="assets/logo-white.png" alt="GARWARE" style="max-width: 140px;"></div>
-                <div class="partner-logo fade-in"><img src="assets/Maniac-Line-4K.png" alt="Maniac-Line" style="max-width: 140px;"></div>
-                <div class="partner-logo fade-in"><img src="assets/Ultraguard-PPF.webp" alt="Ultraguard-PPF" style="max-width: 140px;"></div>
-                <div class="partner-logo fade-in"><img src="assets/logo-annovi-reverberi-w.57cf059b.svg" alt="annovi-reverberi" style="max-width: 140px;"></div>
-                <div class="partner-logo fade-in"><img src="assets/pg-lgo-1-600x154.png" alt="PAINTGUARD" style="max-width: 140px;"></div>
+                                <div style="display: flex; animation: marquee 30s linear infinite; width: max-content;">
+                                    <div class="partner-logo fade-in"><img src="assets/m4d-logo.webp" alt="M4D logo" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/logo-ccc-1-removebg-preview-qpgcjt8q0q25lt7gw16l6vkr7bwbu856npz1qzm5uw.png" alt="Car Craft Studio logo" style="max-width: 160px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/header-logo.webp" alt="Manmachine Works logo" style="max-width: 170px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/Logonew_2_png.png" alt="3M logo" style="max-width: 80px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/Mafra-&-maxshine-combine-logo-2-2.png" alt="Mafra logo" style="max-width: 120px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/logo-white.png" alt="GARWARE" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/Maniac-Line-4K.png" alt="Maniac-Line" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/Ultraguard-PPF.webp" alt="Ultraguard-PPF" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/logo-annovi-reverberi-w.57cf059b.svg" alt="annovi-reverberi" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/pg-lgo-1-600x154.png" alt="PAINTGUARD" style="max-width: 140px;"></div>
+                                    <!-- Repeat logos for seamless loop -->
+                                    <div class="partner-logo fade-in"><img src="assets/m4d-logo.webp" alt="M4D logo" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/logo-ccc-1-removebg-preview-qpgcjt8q0q25lt7gw16l6vkr7bwbu856npz1qzm5uw.png" alt="Car Craft Studio logo" style="max-width: 160px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/header-logo.webp" alt="Manmachine Works logo" style="max-width: 170px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/Logonew_2_png.png" alt="3M logo" style="max-width: 80px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/Mafra-&-maxshine-combine-logo-2-2.png" alt="Mafra logo" style="max-width: 120px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/logo-white.png" alt="GARWARE" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/Maniac-Line-4K.png" alt="Maniac-Line" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/Ultraguard-PPF.webp" alt="Ultraguard-PPF" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/logo-annovi-reverberi-w.57cf059b.svg" alt="annovi-reverberi" style="max-width: 140px;"></div>
+                                    <div class="partner-logo fade-in"><img src="assets/pg-lgo-1-600x154.png" alt="PAINTGUARD" style="max-width: 140px;"></div>
+
+                                    
+                                </div>
             </div>
         </div>
     </section>
@@ -1445,7 +1443,7 @@
                     <label for="message">Additional Message</label>
                     <textarea id="message" name="message" rows="4" placeholder="Tell us about your requirements..."></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Inquiry via WhatsApp</button>
+                <button type="submit" class="submit-btn">Send Inquiry</button>
             </form>
         </div>
     </section>
@@ -1466,8 +1464,8 @@
                 <div class="footer-section">
                     <h3>Contact Information</h3>
                     <p>📞 +91 9131799566<br>
-                    📞 7000344062<br>
-                    📞 9770881363</p>
+                    📞 +91 7000344062<br>
+                    📞 +91 9770881363</p>
                     <p style="margin-top: 1rem;">
                     ✉️ glosseraguna@gmail.com<br>
                     🌐 glosseradetailing.com</p>
@@ -1493,7 +1491,6 @@
             
             <div class="social-links">
                 <a href="https://instagram.com/glossera_car.detailing.studio" target="_blank" title="Instagram">📷</a>
-                <a href="https://youtube.com/c/GlosseraCarDetailingStudio" target="_blank" title="YouTube">📹</a>
                 <a href="https://glosseradetailing.com" target="_blank" title="Website">🌐</a>
                 <a href="tel:+919131799566" title="Call Us">📞</a>
                 <a href="https://api.whatsapp.com/send?phone=919131799566&text=hello%20sir" target="_blank" title="WhatsApp">💬</a>
