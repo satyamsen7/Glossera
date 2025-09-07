@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: index.php");
         exit;
     } else {
-        echo "<script>alert('❌ Invalid login credentials'); window.location='login.php';</script>";
+        echo "<script>alert('❌ Invalid login credentials'); window.location='admin_login.php';</script>";
     }
 }
 ?>

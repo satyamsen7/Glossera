@@ -24,7 +24,7 @@ $admin = $stmt->get_result()->fetch_assoc();
     
     <!-- Left: Logo -->
     <a href="../index.html" class="flex items-center flex-shrink-0">
-      <img src="../assets/logo.png" alt="Logo" 
+      <img src="../assets/logo.webp" alt="Logo" 
            class="h-10 w-auto object-contain sm:h-12" />
     </a>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glossera - Premium Car Detailing Studio</title>
+    <title>Glossera - Car Detailing Studio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -1622,20 +1622,14 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title fade-in">xxxx</h2>
-            <div class="promos-grid" style="margin-bottom: 2rem;">
-                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_6953.JPG" alt="Promo image 1"></div>
-                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_6954.JPG" alt="Promo image 2"></div>
-                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_6955.JPG" alt="Promo image 3"></div>
-            </div>
             <h2 class="section-title fade-in">Our Washing Levels</h2>
             
             <div class="services-grid">
                 <!-- Gloss Touch -->
-                <div class="service-card fade-in" onclick="bookService('Gloss Touch', '₹349', 'Basic exterior wash, Foam wash, Underbody cleaning, Tyre cleaning, Microfiber scratch-proof cleaning')">
+                <div class="service-card fade-in" onclick="bookService('Gloss Touch', '349', 'Basic exterior wash, Foam wash, Underbody cleaning, Tyre cleaning, Microfiber scratch-proof cleaning')">
                     <div class="service-header">
                         <h3 class="service-title">GLOSS TOUCH</h3>
-                        <span class="service-price">₹349</span>
+                        <span class="service-price">₹349*</span>
                     </div>
                     <ul class="service-features">
                         <li>Basic exterior wash</li>
@@ -1648,10 +1642,10 @@
                 </div>
 
                 <!-- Dual Gloss -->
-                <div class="service-card fade-in" onclick="bookService('Dual Gloss', '₹499', 'Exterior + Interior wash, Deep vacuum cleaning, Interior refresh, Dashboard polish, Interior sanitisation')">
+                <div class="service-card fade-in" onclick="bookService('Dual Gloss', '499', 'Exterior + Interior wash, Deep vacuum cleaning, Interior refresh, Dashboard polish, Interior sanitisation')">
                     <div class="service-header">
                         <h3 class="service-title">DUAL GLOSS</h3>
-                        <span class="service-price">₹499</span>
+                        <span class="service-price">₹499*</span>
                     </div>
                     <ul class="service-features">
                         <li>Exterior + Interior wash</li>
@@ -1662,10 +1656,10 @@
                 </div>
 
                 <!-- Crystal Gloss -->
-                <div class="service-card fade-in" onclick="bookService('Crystal Gloss', '₹999', 'Exterior + Interior + Polish, Engine steam, AC steam cleaning, Exterior polish')">
+                <div class="service-card fade-in" onclick="bookService('Crystal Gloss', '999', 'Exterior + Interior + Polish, Engine steam, AC steam cleaning, Exterior polish')">
                     <div class="service-header">
                         <h3 class="service-title">CRYSTAL GLOSS</h3>
-                        <span class="service-price">₹999</span>
+                        <span class="service-price">₹999*</span>
                     </div>
                     <ul class="service-features">
                         <li>Exterior + Interior + Polish</li>
@@ -1677,15 +1671,56 @@
                     </ul>
                     <button class="book-btn">Book Now</button>
                 </div>
+
+                
+
             </div>
 
+            <div class="premium-services">
+
+                <div class="service-card fade-in" onclick="bookService('PREMIUM GLOSS (DRY CLEANING)', '1299', 'Interior vacuuming and more..')">
+                    <div class="service-header">
+                        <h3 class="service-title">PREMIUM GLOSS (DRY CLEANING)</h3>
+                        <span class="service-price">₹1299*</span>
+                    </div>
+                    <ul class="service-features">                   
+                        <li>Interior vacuuming</li>
+                        <li>Deep cleaning the interior dash, center console & door panels</li>
+                        <li>Interior dressing (Glossy finish / Satin finish)</li>
+                        <li>Roof cleaning</li>
+                        <li>Upholstery & carpet cleaning</li>
+                        <li>And 6+ more</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+                <!-- Dual Gloss -->
+                <div class="service-card fade-in" onclick="bookService('The Glossy touch', '3999', 'Full deep clean, Scratch removal and more...')">
+                    <div class="service-header">
+                        <h3 class="service-title">The Glossy touch</h3>
+                        <span class="service-price">₹3999*</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Full deep clean</li>
+                        <li>Scratch removal</li>
+                        <li>Rubbing</li>
+                        <li>Polishing</li>
+                    </ul>
+                    <button class="book-btn">Book Now</button>
+                </div>
+
+            </div>
+
+            <br> <br> <br>
+
+            
             <h2 class="section-title fade-in">Ceramic-Graphene</h2>
             
             <div class="premium-services">
                 <!-- Ceramic Coating -->
-                <div class="service-card fade-in" onclick="bookService('Ceramic Coating', '₹17,999 onwards', 'Forever Young MAFRA hydrophobic ceramic, Maniac Top Gloss 5, 3M Ceramic, Kovalent Ceramic Coating - 10H hardness protection')">
+                <div class="service-card fade-in" onclick="bookService('Ceramic Coating', '17,999 onwards', 'Forever Young MAFRA hydrophobic ceramic, Maniac Top Gloss 5, 3M Ceramic, Kovalent Ceramic Coating - 10H hardness protection')">
                     <h3>Ceramic Coating (10H)</h3>
-                    <p class="service-price">₹17,999 onwards</p>
+                    <p class="service-price">₹17,999* onwards</p>
                     <ul class="service-features">
                         <li>Forever Young (MAFRA hydrophobic ceramic)</li>
                         <li>Maniac Top Gloss 5</li>
@@ -1697,9 +1732,9 @@
                 </div>
 
                 <!-- Graphene Coating -->
-                <div class="service-card fade-in" onclick="bookService('Graphene Coating', '₹24,999 onwards', 'Ultra Gloss 10H, M4D Graphene, LOD Graphene, Kovalent Graphene - Advanced nanotechnology protection')">
+                <div class="service-card fade-in" onclick="bookService('Graphene Coating', '24,999 onwards', 'Ultra Gloss 10H, M4D Graphene, LOD Graphene, Kovalent Graphene - Advanced nanotechnology protection')">
                     <h3>Graphene Coating (10H)</h3>
-                    <p class="service-price">₹24,999 onwards</p>
+                    <p class="service-price">₹24,999* onwards</p>
                     <ul class="service-features">
                         <li>Ultra Gloss (10H)</li>
                         <li>M4D Graphene</li>
@@ -1714,23 +1749,27 @@
                 
             </div>
 
-            <br><br><br>
-
-            <h2 class="section-title fade-in">XXXX</h2>
-            <div class="promos-grid" style="margin: 2rem 0 3rem;">
-                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_7092.jpg" alt="Work image"></div>
-                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_7084.jpg" alt="Work image"></div>
-                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_7091.jpg" alt="Work image"></div>
-            </div>
-
+<br><br><br>
 
             <h2 class="section-title fade-in">PPF >> PAINT Protection FILM</h2>
+
+            <div class="promos-grid" style="margin-bottom: 2rem;">
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_6953.JPG" alt="Promo image 1"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_6954.JPG" alt="Promo image 2"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_6955.JPG" alt="Promo image 3"></div>
+            </div>
+            <div class="promos-grid" style="margin-bottom: 2rem;">
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/pp2.jpg" alt="Promo image 1"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/pp1.jpg" alt="Promo image 2"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/pp3.jpg" alt="Promo image 3"></div>
+            </div>
+            
             
             <div class="premium-services">
 
-                <div class="service-card fade-in" onclick="bookService('5 Years+ TPU', '₹59,999 onwards', 'Self-healing technology, Super shine, Acid rain protection, Hydrophobic coating, Ultimate paint protection')">
+                <div class="service-card fade-in" onclick="bookService('5 Years+ TPU', '59,999 onwards', 'Self-healing technology, Super shine, Acid rain protection, Hydrophobic coating, Ultimate paint protection')">
                     <h3>5 Years+ TPU</h3>
-                    <p class="service-price">₹59,999 onwards</p>
+                    <p class="service-price">₹59,999* onwards</p>
                     <ul class="service-features">
                         <li>Self-healing technology</li>
                         <li>Super shine finish</li>
@@ -1741,9 +1780,9 @@
                     <button class="book-btn">Book Now</button>
                 </div>
 
-                <div class="service-card fade-in" onclick="bookService('3 Years+ TPU (Garaware)', '₹54,999 onwards', 'Self-healing technology, Star shine, Hydrophobic coating, Ultimate paint protection')">
+                <div class="service-card fade-in" onclick="bookService('3 Years+ TPU (Garaware)', '54,999 onwards', 'Self-healing technology, Star shine, Hydrophobic coating, Ultimate paint protection')">
                     <h3>3 Years+ TPU (Garaware)</h3>
-                    <p class="service-price">₹54,999 onwards</p>
+                    <p class="service-price">₹54,999* onwards</p>
                     <ul class="service-features">
                         <li>Self-healing technology</li>
                         <li>Star shine finish</li>
@@ -1753,19 +1792,28 @@
                     <button class="book-btn">Book Now</button>
                 </div>
 
-                <!-- PPF -->
+                
                 
             </div>
+
+            
             <br> <br> <br>
 
 
             <h2 class="section-title fade-in">GlossXtras - Extra Care Services</h2>
+
+            
+            <div class="promos-grid" style="margin: 2rem 0 3rem;">
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_7092.jpg" alt="Work image"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_7084.jpg" alt="Work image"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/IMG_7091.jpg" alt="Work image"></div>
+            </div>
             
             <div class="services-grid">
-                <div class="service-card fade-in" onclick="bookService('Glass Restoration', '₹999', 'Professional glass restoration service for crystal clear visibility')">
+                <div class="service-card fade-in" onclick="bookService('Glass Restoration', '999', 'Professional glass restoration service for crystal clear visibility')">
                     <div class="service-header">
                         <h3 class="service-title">Glass Restoration</h3>
-                        <span class="service-price">₹999</span>
+                        <span class="service-price">₹999*</span>
                     </div>
                     <ul class="service-features">
                         <li>Crystal clear visibility</li>
@@ -1775,10 +1823,10 @@
                     <button class="book-btn">Book Now</button>
                 </div>
 
-                <div class="service-card fade-in" onclick="bookService('AC Vent Deep Cleaning', '₹999', 'Deep cleaning and sanitization of AC vents for fresh air circulation')">
+                <div class="service-card fade-in" onclick="bookService('AC Vent Deep Cleaning', '999', 'Deep cleaning and sanitization of AC vents for fresh air circulation')">
                     <div class="service-header">
                         <h3 class="service-title">AC Vent Deep Cleaning</h3>
-                        <span class="service-price">₹999</span>
+                        <span class="service-price">₹999*</span>
                     </div>
                     <ul class="service-features">
                         <li>Deep sanitization</li>
@@ -1788,10 +1836,10 @@
                     <button class="book-btn">Book Now</button>
                 </div>
 
-                <div class="service-card fade-in" onclick="bookService('UPOHOLSTERY', '₹599', 'Stain and spot removal')">
+                <div class="service-card fade-in" onclick="bookService('UPOHOLSTERY', '599', 'Stain and spot removal')">
                     <div class="service-header">
                         <h3 class="service-title">UPOHOLSTERY</h3>
-                        <span class="service-price">₹599</span>
+                        <span class="service-price">₹599*</span>
                     </div>
                     <ul class="service-features">
                         <li>Stain and spot removal</li>
@@ -1801,11 +1849,20 @@
                     </ul>
                     <button class="book-btn">Book Now</button>
                 </div>
+            </div>
+
+            <div class="promos-grid" style="margin: 2rem 0 3rem;">
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/ex1.webp" alt="Work image"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/ex2.webp" alt="Work image"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/ex3.jpg" alt="Work image"></div>
+            </div>
+
+            <div class="services-grid">
 
                 <div class="service-card fade-in" onclick="bookService('WINDSHEILD CLARITY & HYDROPНОВІС COATING', '₹999', 'Stain and spot removal')">
                     <div class="service-header">
                         <h3 class="service-title">WINDSHEILD CLARITY & HYDROPНОВІС COATING</h3>
-                        <span class="service-price">₹999</span>
+                        <span class="service-price">₹999*</span>
                     </div>
                     <ul class="service-features">
                         <li>Crystal-clear visibility</li>
@@ -1815,10 +1872,10 @@
                     <button class="book-btn">Book Now</button>
                 </div>
 
-                <div class="service-card fade-in" onclick="bookService('TYRE & ALLOY TREATMENT', '₹499', 'Stain and spot removal')">
+                <div class="service-card fade-in" onclick="bookService('TYRE & ALLOY TREATMENT', '499', 'Stain and spot removal')">
                     <div class="service-header">
                         <h3 class="service-title">TYRE & ALLOY TREATMENT</h3>
-                        <span class="service-price">₹499</span>
+                        <span class="service-price">₹499*</span>
                     </div>
                     <ul class="service-features">
                         <li>Restores original shine</li>
@@ -1830,10 +1887,10 @@
                     <button class="book-btn">Book Now</button>
                 </div>
 
-                <div class="service-card fade-in" onclick="bookService('Engine Cleaning & Coat', '₹699', 'Engine bay cleaning and protective coating for longevity')">
+                <div class="service-card fade-in" onclick="bookService('Engine Cleaning & Coat', '699', 'Engine bay cleaning and protective coating for longevity')">
                     <div class="service-header">
                         <h3 class="service-title">Engine Cleaning & Coat</h3>
-                        <span class="service-price">₹699</span>
+                        <span class="service-price">₹699*</span>
                     </div>
                     <ul class="service-features">
                         <li>Engine bay cleaning</li>
@@ -1845,12 +1902,18 @@
             </div>
 
             <h2 class="section-title fade-in">Biker's Love - Motorcycle Services</h2>
+
+            <div class="promos-grid" style="margin-bottom: 2rem;">
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/b1.jpg" alt="Promo image 1"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/b2.jpg" alt="Promo image 2"></div>
+                <div class="promo-card tight fade-in"><img class="promo-img" src="assets/b3.jpg" alt="Promo image 3"></div>
+            </div>
             
             <div class="services-grid">
-                <div class="service-card fade-in" onclick="bookService('Street Spark', '₹149', 'Foam wash with neutral shampoo for motorcycles')">
+                <div class="service-card fade-in" onclick="bookService('Street Spark', '149', 'Foam wash with neutral shampoo for motorcycles')">
                     <div class="service-header">
                         <h3 class="service-title">Street Spark</h3>
-                        <span class="service-price">₹149</span>
+                        <span class="service-price">₹149*</span>
                     </div>
                     <ul class="service-features">
                         <li>Foam wash</li>
@@ -1860,10 +1923,10 @@
                     <button class="book-btn">Book Now</button>
                 </div>
 
-                <div class="service-card fade-in" onclick="bookService('Bike Premium Package', '₹499', 'Chrome & alloy coat, hydrophobic coating, helmet visor coating, helmet sanitization - Any 2 services')">
+                <div class="service-card fade-in" onclick="bookService('Bike Premium Package', '499', 'Chrome & alloy coat, hydrophobic coating, helmet visor coating, helmet sanitization - Any 2 services')">
                     <div class="service-header">
                         <h3 class="service-title">Premium Package</h3>
-                        <span class="service-price">₹499</span>
+                        <span class="service-price">₹499*</span>
                     </div>
                     <ul class="service-features">
                         <li>Chrome & alloy coat</li>
@@ -1876,10 +1939,10 @@
                     <button class="book-btn">Book Now</button>
                 </div>
 
-                <div class="service-card fade-in" onclick="bookService('PPF', '₹3999', 'Scratch and chip resistance')">
+                <div class="service-card fade-in" onclick="bookService('PPF', '5999', 'Scratch and chip resistance')">
                     <div class="service-header">
                         <h3 class="service-title">PPF</h3>
-                        <span class="service-price">₹3,999</span>
+                        <span class="service-price">₹5,999*</span>
                     </div>
                     <ul class="service-features">
                         <li>Scratch and chip resistance</li>
@@ -1892,10 +1955,10 @@
                     <button class="book-btn">Book Now</button>
                 </div>
 
-                <div class="service-card fade-in" onclick="bookService('Bike Ceramic/Graphene', '₹1,999', 'Ceramic or Graphene coating for motorcycles - premium protection')">
+                <div class="service-card fade-in" onclick="bookService('Bike Ceramic/Graphene', '2,999', 'Ceramic or Graphene coating for motorcycles - premium protection')">
                     <div class="service-header">
                         <h3 class="service-title">Ceramic/Graphene</h3>
-                        <span class="service-price">₹1,999</span>
+                        <span class="service-price">₹2,999*</span>
                     </div>
                     <ul class="service-features">
                         <li>Ceramic coating option</li>
