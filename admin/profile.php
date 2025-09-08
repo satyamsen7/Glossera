@@ -69,6 +69,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Admin Profile - Glossera Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../fav_icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../fav_icon/favicon-16x16.png">
+    <!-- Apple Touch Icon (for iOS devices) -->
+    <link rel="apple-touch-icon" href="../fav_icon/apple-touch-icon.png">
+    <!-- Web Manifest (for PWA or mobile install) -->
+    <link rel="manifest" href="../fav_icon/site.webmanifest">
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
